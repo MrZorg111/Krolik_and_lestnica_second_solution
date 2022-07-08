@@ -1,23 +1,25 @@
 #include <iostream>
 
-int jump (int& dp, int n = 1, int k = 1) {
-    int sol = 1, count = 0;
-    sol += n + k;
-    n = k;
-    k = sol;
-    count++;
-    if (count == dp) {
-        n = 1;
-        k = 1;
-        count = 0;
+int jump(int sd, int a, int count){
+    if (sd == 1){
+        return 1;
     }
-    jump(n, k );
+    if (sd == 2) {
+        return 2;
+    }
+    if (sd == 3) {
+        return 4;
+    }
+    if (count == sd) {
+        return a;
+    }
+    return jump(sd, a * 2, count += 1);
 }
 
-
 int main() {
-    int n;
-    std::cout << "Enter number:" << std::endl;
+    int n, start_fib = 7, j = 4;
+    std::cout << "Enter number\n";
     std::cin >> n;
-    return jump(n);
+    std::cout << jump(n, start_fib, j);
+
 }
